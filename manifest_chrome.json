@@ -1,9 +1,8 @@
 {
-  "minimum_chrome_version": "80",
+  "minimum_chrome_version": "88.0",
+  "optional_host_permissions": ["https://*.aesr.dev/*"],
   "background": {
-    "scripts": [
-      "js/background.js"
-    ],
-    "persistent": false
+    "service_worker": "js/background.js",
+    "type": "module"
   }
 }

@@ -1,6 +1,41 @@
 Changelog
 =========
 
+## 5.0.1 (2024/04/07)
+
+- Add support for remote retrieval of user configurations through [AESR Config Hub](https://aesr.dev/)
+
+## 4.0.3 (2023/11/27)
+
+- Implement fallback for displaying the role list in Firefox private browsing mode
+
+## 4.0.2 (2023/11/07)
+
+- Fix parsing of 'role_arn' when the role name contains slashes
+
+## 4.0.1 (2023/10/31)
+
+- Fix the switch targets to list in the order of Simple profiles, followed by Complex target profiles
+- Shorten the process of fetching user info during the loading of the AWS Management Console page
+
+## 4.0.0 (2023/10/22)
+
+- Change the storage location of profile data to **IndexedDB**, removing the registration number limit
+- Update the host specification for the AWS Management Console
+
+## 3.0.0 (2023/06/18)
+
+- Migrate to Manifest V3 (thanks to @eetann)
+- Add 'Visual mode' that can change UI to Dark Mode (thanks to @XargsUK)
+
+## 2.3.2 (2022/11/20)
+
+- Truncate the display name when the length exceeds the limit (thanks to @samhpickering)
+- Fix the browser console error when the popup menu is closed
+- Updating the target AWS console URLs, support new health dashboard and LightSail
+- Support 'aws_account_alias' parameter on base account
+- Suppress outputing an error in a browser dev tool when the option page is opened
+
 ## 2.3.1 (2022/01/30)
 
 - Fix that 'Sign-in endpoint in current region' breaks a switch role on some page like Chatbot

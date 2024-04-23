@@ -15,7 +15,6 @@ This extension shows a menu of switchable roles that you can configure manually.
 ## Large Supporters
 
 <a href="https://classmethod.jp/" rel="noopener"><img alt="Classmethod, Inc." src="https://aesr.tilfin.com/supporters/img/classmethod.png" width="208" height="90"></a>
-<a href="https://www.doit-intl.com/" rel="noopener"><img alt="Classmethod, Inc." src="https://aesr.tilfin.com/supporters/img/doitintl.png" width="208" height="90"></a>
 
 ## Development and Distribution Guideline
 
@@ -66,7 +65,7 @@ More complex configurations involve multiple AWS accounts and/or organizations.
 
 - A profile specified by the `source_profile` of the others is defined as a **base account**.
 
-- **If your account is aliased, the alias will be shown in the role dropdown after 'Account:'.  You MUST use that alias as the aws_account_id for the base account instead of the numerical account id or your configuration won't work as expected.**
+- If your account is aliased, you specify `aws_account_alias` in **base account**.
 
 - If an `role_name` is specified in a **base account** it will also check for the role that is used to login to AWS. This can be used to select a subset of accounts when you are using an SSO IdP to login to AWS. If a role name starts with *AWSReservedSSO_*, the value should be only the **permission set** name.
 
@@ -79,7 +78,8 @@ More complex configurations involve multiple AWS accounts and/or organizations.
 
 ```
 [organization1]
-aws_account_id = your-account-alias
+aws_account_id = 000011112222
+aws_account_alias = your-account-alias ; If your account is aliased
 
 [Org1-Account1-Role1]
 role_arn = arn:aws:iam::123456789012:role/Role1
@@ -131,6 +131,7 @@ role_name = Entry-Role-1 ; Role for Federated Login, or User to login
 
 [Org3-BaseAccount2]
 aws_account_id = 333300000000
+aws_account_alias = mycompany
 role_name = custom_permission-set ; DO NOT set AWSReservedSSO_custom_permission-set_0123456890abcdef
 
 [Org3-Account1-Role1]
@@ -155,13 +156,14 @@ The 'Show only matching roles' setting is for use with more sophisticated accoun
 - **Sign-in endpoint in current region (Experimental, Supporters only)** instead of *signin.aws.amazon.com* when you browse a non-global page in AWS Management Console. For those working geographically far from Virginia, the switch role may be a little faster.
 - ~~**Automatically assume last assumed role (Experimental)** automatically assumes last assumed role on the next sign-in if did not back to the base account and signed out.~~ **temporarily disabled**
 - **Configuration storage** specifies which storage to save to. 'Sync' can automatically share it between browsers with your account but cannot store many profiles. 'Local' is the exact opposite of 'Sync.'
+- **Visual mode** specifies whether light mode or dark mode is applied to the UI appearance.
 
 ## Extension API
 
-- **Config sender extension** allowed by the **ID** can send your switch roles configuration to this extension. **'Configuration storage' forcibly becomes 'Local' when the configuration is received from a config sender.** [See](https://github.com/tilfin/aws-extend-switch-roles/wiki/External-API#config-sender-extension) how to make your config sender extension.
+- **Config sender extension** allowed by the **ID** can send your switch roles configuration to this extension. **'Configuration storage' forcibly becomes 'Local' when the configuration is received from a config sender.** [See](https://github.com/tilfinltd/aws-extend-switch-roles/wiki/External-API#config-sender-extension) how to make your config sender extension.
 
 ## Appearance
 
-![Screen Shot 1](https://github.com/tilfin/aws-extend-switch-roles/blob/images/ScreenShot_1.png)
+![Screen Shot 1](https://github.com/tilfinltd/aws-extend-switch-roles/blob/images/ScreenShot_1.png)
 
-![Screen Shot 3](https://github.com/tilfin/aws-extend-switch-roles/blob/images/ScreenShot_3_960x600.png)
+![Screen Shot 3](https://github.com/tilfinltd/aws-extend-switch-roles/blob/images/ScreenShot_3_960x600.png)
